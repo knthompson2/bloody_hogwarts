@@ -13,4 +13,13 @@ RSpec.describe Student, type: :model do
     it {should have_many(:courses).through(:student_courses)}
   end
 
+  it 'should average age of students' do
+    @ron = Student.create!(name: "Ron", age: 16, house: "Gryffindor")
+    @harry = Student.create!(name: "Harry", age: 16, house: "Gryffindor")
+    @hermione = Student.create!(name: "Hermione", age: 16, house: "Gryffindor")
+    @draco = Student.create!(name: "Draco", age: 15, house: "Gryffindor")
+
+    expect(Student.age).to eq(15.8)
+  end
+
 end
